@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Clothes.Models.Clothes>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Одежда</title>
+</head>
+<body>   
+
+    <table class="table">
+        <tr>
+            <th>
+                <p>Наименование</p>
+            </th>
+            <th>
+                <p>Размер</p>
+            </th>
+            <th>
+                <p>Количество</p>
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "EditClothes", new { id=item.Id }) |                
+                @Html.ActionLink("Удалить", "DeleteClothes", new { id=item.Id })
+            </td>
+        </tr>
+    }    
+    </table>
+    <form action="~/Clothes/AddClothes">
+        <button>Добавить запись</button>
+    </form>    
+</body>
+</html>
